@@ -5,6 +5,7 @@ import cors from 'cors';
 import "./database/index";
 import AppDataSource from "./database/index";
 import routes from "./routes";
+
 const app = express()
 const port= 3000
 
@@ -15,6 +16,8 @@ AppDataSource.initialize().then(() => {
 }).catch((e) => {
     console.log(e)
 })
+
+app.use(express.json())
 
 app.use(cors())
 

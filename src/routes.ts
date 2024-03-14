@@ -23,29 +23,25 @@ routes.get('/:obj', async (req, res) => {
 routes.get('/:obj/:id', async (req, res) => {
     const { obj, id } = req.params
     const controller = controllers[obj].controller
-    let result = await controller.get(req, res, id)
-    res.send(result)
+    return await controller.get(req, res, id)
 })
 
 routes.post('/:obj', async (req, res) => {
     const { obj } = req.params
     const controller = controllers[obj].controller
-    let result = await controller.create(req, res)
-    res.send(result)
+    return await controller.create(req, res)
 })
 
 routes.put('/:obj/:id', async (req, res) => {
     const { obj, id } = req.params
     const controller = controllers[obj].controller
-    let result = await controller.update(req, res, id)
-    res.send(result)
+    return await controller.update(req, res, id)
 })
 
 routes.delete('/:obj/:id', async (req, res) => {
     const { obj, id } = req.params
     const controller = controllers[obj].controller
-    let result = await controller.delete(req, res, id)
-    res.send(result)
+    return await controller.delete(req, res, id)
 })
 
 
