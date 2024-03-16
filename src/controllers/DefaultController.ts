@@ -51,4 +51,37 @@ export class DefaultController {
             })
         }
     }
+
+    async update(request: Request, response: Response, id: any) {
+        const obj = request.body
+        const entity = await this.service.update(obj, id)
+        if(entity) {
+            return response.status(200).send({
+                table: this.table,
+                data: entity,
+                success: true
+            })
+        } else {
+            return response.status(500).send({
+                table: this.table,
+                success: false
+            })
+        }
+    }
+
+    async delete(request: Request, response: Response, id: any) {
+        const entity = await this.service.delete(id)
+        if(entity) {
+            return response.status(200).send({
+                table: this.table,
+                data: entity,
+                success: true
+            })
+        } else {
+            return response.status(500).send({
+                table: this.table,
+                success: false
+            })
+        }
+    }
 }
