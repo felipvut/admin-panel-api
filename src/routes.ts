@@ -2,6 +2,7 @@ import { Router } from "express";
 import { ClientsController } from "./controllers/ClientsController";
 import { WorkersController } from "./controllers/WorkersController";
 import { UsersController } from "./controllers/UsersController";
+import { ServiceOrdersController } from "./controllers/ServiceOrdersController";
 
 const routes = Router()
 
@@ -14,6 +15,9 @@ const controllers = {
     },
     users: {
         controller: new UsersController()
+    },
+    service_orders: {
+        controller: new ServiceOrdersController()
     },
 }
 

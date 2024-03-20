@@ -3,6 +3,7 @@ import Client from "../entities/Client";
 import Worker from "../entities/Worker";
 import dotenv from "dotenv";
 import User from "../entities/User";
+import ServiceOrder from "../entities/ServiceOrder";
 dotenv.config()
 
 const AppDataSource = new DataSource({
@@ -15,7 +16,7 @@ const AppDataSource = new DataSource({
     ssl: true,
     entities: [
         Client, Worker,
-        User
+        User, ServiceOrder
     ],
     synchronize: false,
     logging: true,
