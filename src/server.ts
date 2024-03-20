@@ -5,6 +5,7 @@ import cors from 'cors';
 import "./database/index";
 import AppDataSource from "./database/index";
 import routes from "./routes";
+import jwt from "jsonwebtoken"
 
 const app = express()
 const port= 3000
@@ -15,6 +16,19 @@ AppDataSource.initialize().then(() => {
     })
 }).catch((e) => {
     console.log(e)
+})
+
+app.use(async (req, res, next) => {
+    if(req.method == 'GET') {
+        next()
+    } else {
+        const tokeIsValid = await jwt.verify('', process.env.JWT_SECRET, function(err, decoded) {
+            console.log(decoded)
+          });
+          console.log(tokeIsValid)
+    }
+    console.log('Time:', Date.now());
+    next();
 })
 
 app.use(express.json())

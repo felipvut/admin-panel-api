@@ -1,7 +1,8 @@
 import { DataSource } from "typeorm";
-import Livro from "../entities/Client";
+import Client from "../entities/Client";
 import Worker from "../entities/Worker";
 import dotenv from "dotenv";
+import User from "../entities/User";
 dotenv.config()
 
 const AppDataSource = new DataSource({
@@ -11,7 +12,11 @@ const AppDataSource = new DataSource({
     username: process.env.TYPEORM_USERNAME,
     password: process.env.TYPEORM_PASSWORD,
     database: process.env.TYPEORM_DATABASE,
-    entities: [Livro, Worker],
+    ssl: true,
+    entities: [
+        Client, Worker,
+        User
+    ],
     synchronize: false,
     logging: true,
 })
