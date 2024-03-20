@@ -18,21 +18,20 @@ AppDataSource.initialize().then(() => {
     console.log(e)
 })
 
-app.use(async (req, res, next) => {
-    if(req.method == 'GET') {
-        next()
-    } else {
-        const tokeIsValid = await jwt.verify('', process.env.JWT_SECRET, function(err, decoded) {
-            console.log(decoded)
-          });
-          console.log(tokeIsValid)
-    }
-    console.log('Time:', Date.now());
-    next();
-})
-
 app.use(express.json())
 
 app.use(cors())
 
 app.use(routes)
+
+app.use(async (req, res, next) => {
+    if(req.method == 'GET') {
+        next();
+    } else {
+        await jwt.verify(req.headers.authorization, process.env.JWT_SECRET, function(err, decoded) {
+            if(decoded) {
+                next();
+            }
+          });
+    }
+})

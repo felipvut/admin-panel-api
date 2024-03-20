@@ -21,32 +21,32 @@ const controllers = {
     },
 }
 
-routes.get('generic/:obj', async (req, res) => {
+routes.get('/generic/:obj', async (req, res) => {
     const { obj } = req.params
     const controller = controllers[obj].controller
     return await controller.list(req, res)
 
 })
 
-routes.get('generic/:obj/:id', async (req, res) => {
+routes.get('/generic/:obj/:id', async (req, res) => {
     const { obj, id } = req.params
     const controller = controllers[obj].controller
     return await controller.get(req, res, id)
 })
 
-routes.post('generic/:obj', async (req, res) => {
+routes.post('/generic/:obj', async (req, res) => {
     const { obj } = req.params
     const controller = controllers[obj].controller
     return await controller.create(req, res)
 })
 
-routes.put('generic/:obj/:id', async (req, res) => {
+routes.put('/generic/:obj/:id', async (req, res) => {
     const { obj, id } = req.params
     const controller = controllers[obj].controller
     return await controller.update(req, res, id)
 })
 
-routes.delete('generic/:obj/:id', async (req, res) => {
+routes.delete('/generic/:obj/:id', async (req, res) => {
     const { obj, id } = req.params
     const controller = controllers[obj].controller
     return await controller.delete(req, res, id)
