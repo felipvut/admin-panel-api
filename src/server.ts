@@ -18,20 +18,26 @@ AppDataSource.initialize().then(() => {
     console.log(e)
 })
 
-app.use(express.json())
-
 app.use(cors())
 
-app.use(routes)
+app.use(express.json())
 
 app.use(async (req, res, next) => {
     if(req.method == 'GET') {
         next();
-    } else {
+    } else if(req.url == '/login') {
+        next();
+    } else{
         await jwt.verify(req.headers.authorization, process.env.JWT_SECRET, function(err, decoded) {
             if(decoded) {
                 next();
+                return
             }
+            return res.status(404).end()
           });
     }
 })
+
+app.use(routes)
+
+
