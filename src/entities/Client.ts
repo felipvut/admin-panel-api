@@ -15,7 +15,7 @@ export default class Client{
     @Column()
     cpf: string;
 
-    @CreateDateColumn()
+    @Column("date")
     due_date: Date;
 
 }

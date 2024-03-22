@@ -12,10 +12,10 @@ export default class ServiceOrder{
     @Column()
     description: string;
 
-    @CreateDateColumn()
+    @Column("date")
     start_date: Date;
 
-    @CreateDateColumn()
+    @Column("date")
     end_date: Date;
 
 }

@@ -15,10 +15,10 @@ export default class Worker{
     @Column()
     cpf: string;
 
-    @CreateDateColumn()
+    @Column("date")
     due_date: Date;
 
-    @CreateDateColumn()
+    @Column("date")
     contract_end: Date;
 
 }
