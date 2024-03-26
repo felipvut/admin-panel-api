@@ -16,10 +16,10 @@ export default class Worker{
     @Column()
     cpf: string;
 
-    @Column("date")
+    @CreateDateColumn()
     due_date: Date;
 
-    @Column("date")
+    @CreateDateColumn()
     contract_end: Date;
 
     @OneToMany(() => ServiceOrder, (service_orders) => service_orders.worker)

@@ -16,7 +16,7 @@ export default class Client{
     @Column()
     cpf: string;
 
-    @Column("date")
+    @CreateDateColumn()
     due_date: Date;
 
     @OneToMany(() => ServiceOrder, (service_orders) => service_orders.client)
