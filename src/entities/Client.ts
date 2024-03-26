@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToMany } from "typeorm"
+import ServiceOrder from "./ServiceOrder";
 
 @Entity("clients")
 export default class Client{
@@ -17,5 +18,8 @@ export default class Client{
 
     @Column("date")
     due_date: Date;
+
+    @OneToMany(() => ServiceOrder, (service_orders) => service_orders.client)
+    service_orders: ServiceOrder[]
 
 }

@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToMany } from "typeorm"
+import ServiceOrder from "./ServiceOrder";
 
 @Entity("workers")
 export default class Worker{
@@ -21,4 +22,6 @@ export default class Worker{
     @Column("date")
     contract_end: Date;
 
+    @OneToMany(() => ServiceOrder, (service_orders) => service_orders.worker)
+    service_orders: ServiceOrder[]
 }
