@@ -14,10 +14,10 @@ export default class ServiceOrder{
     @Column()
     description: string;
 
-    @Column("date")
+    @CreateDateColumn()
     start_date: Date;
 
-    @Column("date")
+    @CreateDateColumn()
     end_date: Date;
 
     @ManyToOne(() => Worker, (workers) => workers.service_orders)
@@ -34,4 +34,5 @@ export default class ServiceOrder{
     @Column()
     clients_id: string;
 
+    start_date_br: string;
 }
