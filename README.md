@@ -1,1 +1,1 @@
-https://infinity-api.felipedev.com.br/
+https://infinity-api.felipedev.com.br
